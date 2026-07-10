@@ -1,0 +1,15 @@
+numpy==1.26.4
+scipy==1.10.1
+matplotlib==3.8.2
+joblib==1.4.2
+trimesh==4.4.8
+smplx==0.1.28
+pybullet==3.2.5
+qpsolvers[clarabel,daqp,proxqp,scs]
+torch==2.1.0
+pytorch3d==0.7.5
+cvxopt==1.2.6
+PyYAML==6.0.1
+tqdm==4.66.1
+chumpy==0.71
+opencv-python==4.10.0.84

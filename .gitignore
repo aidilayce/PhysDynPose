@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.cache/
+outputs/
+inputs/
+asset/no_wall_flip.obj
+
+# Licensed body-model files are user-provided and must not be committed.
+models/SMPL_male_10PCs.pkl
+data/body_models/
+data/J_regressor_extra.npy
