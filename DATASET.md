@@ -6,8 +6,8 @@ This document describes the released MoviCam dataset archive and how it relates 
 
 The release uses two data archives:
 
-- MoviCam raw dataset archive: `TODO_EDMOND_MOVICAM_RAW_DATA_URL`
-- PhysDynPose inputs archive: `TODO_EDMOND_PHYSDYNPOSE_INPUTS_URL`
+- [MoviCam raw dataset archive](https://edmond.mpg.de/file.xhtml?fileId=345390&version=1.0)
+- [PhysDynPose inputs archive](https://edmond.mpg.de/file.xhtml?fileId=345391&version=1.0)
 
 ### MoviCam Raw Dataset Archive
 
