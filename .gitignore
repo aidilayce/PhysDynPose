@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .cache/
+.webpage_build/
 outputs/
 inputs/
 asset/no_wall_flip.obj

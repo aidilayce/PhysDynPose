@@ -277,6 +277,7 @@ python3 visualizer.py --seq_no 6 --surface 31 --method pip --slam
 Useful visualization options:
 
 - `--no-scene` disables the bundled scene URDF
+- `--camera-distance`, `--camera-yaw`, `--camera-pitch`, and `--camera-target x y z` adjust the PyBullet view
 
 ### Custom Sequence
 
