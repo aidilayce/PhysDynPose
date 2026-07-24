@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PhysDynPose: physics-based human pose estimation from a single moving RGB camera, with the MoviCam dataset.">
+  <title>PhysDynPose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="comparison.css">
+</head>
+<body>
+  <nav class="nav"><a class="brand" href="#top"><span></span>PhysDynPose</a><div><a href="#dataset">Dataset</a><a href="#results">Results</a><a href="#abstract">Abstract</a></div></nav>
+  <main id="top">
+    <header class="hero">
+      <div class="eyebrow">CVPRW 2025 RHOBIN WORKSHOP</div>
+      <h1><span>Physics-aware motion</span><br>from a moving camera.</h1>
+      <p class="dek">PhysDynPose estimates physically plausible 3D human motion in world coordinates when the camera moves and the ground is not flat.</p>
+      <div class="authors">Ayce Idil Aytekin · Chuqiao Li · Diogo Luvizon · Rishabh Dabral · Martin Oswald · Marc Habermann · Christian Theobalt</div>
+      <div class="actions"><a class="primary" href="https://arxiv.org/abs/2507.17406">Paper ↗</a><a href="https://github.com/aidilayce/PhysDynPose">Code ↗</a><a href="https://edmond.mpg.de/file.xhtml?fileId=345390&version=1.0">Dataset ↗</a></div>
+      <img class="teaser" src="assets/teaser.png" alt="Overview of the MoviCam dataset and PhysDynPose method">
+    </header>
+
+    <section class="tldr"><span>TL;DR</span><p>We introduce a non-synthetic dataset containing ground-truth camera trajectories of a dynamically moving RGB camera, scene geometry, and 3D human motion with human-scene contact labels. Then we combine monocular pose estimation, moving-camera SLAM, scene geometry, and physics optimization to recover human motion on real, non-planar terrain.</p></section>
+
+    <section id="dataset" class="dataset-section">
+      <div class="section-head"><div><span class="index">01</span><h2>MoviCam dataset</h2></div><p>Real synchronized captures with moving RGB cameras, ground-truth human motion, camera trajectories, scene geometry, and contact labels.</p></div>
+      <div class="dataset-grid">
+        <article class="dataset-card scene-card"><video autoplay muted loop playsinline preload="metadata"><source src="assets/dataset/scenemesh.mp4" type="video/mp4"></video><div><span>Scene geometry</span><h3>Reconstructed non-flat environment</h3><p>The scene mesh used for contact-aware evaluation and physics optimization.</p></div></article>
+        <article class="dataset-card"><video autoplay muted loop playsinline preload="metadata"><source src="assets/dataset/seq1_captury_wcam.mp4" type="video/mp4"></video><div><span>Sequence 1 · Third person</span><h3>Human, scene, and moving camera</h3><p>Ground-truth SMPL motion and the camera trajectory in the reconstructed scene.</p></div></article>
+        <article class="dataset-card"><video autoplay muted loop playsinline preload="metadata"><source src="assets/dataset/seq1_captury_animated.mp4" type="video/mp4"></video><div><span>Sequence 1 · Camera view</span><h3>View from the moving camera</h3><p>The synchronized viewpoint used by monocular motion estimators.</p></div></article>
+        <article class="dataset-card"><video autoplay muted loop playsinline preload="metadata"><source src="assets/dataset/seq3_captury_wcam.mp4" type="video/mp4"></video><div><span>Sequence 3 · Third person</span><h3>Scene-aware capture overview</h3><p>SMPL ground truth, environment geometry, and dynamic camera path.</p></div></article>
+        <article class="dataset-card"><video autoplay muted loop playsinline preload="metadata"><source src="assets/dataset/seq3_captury_animated.mp4" type="video/mp4"></video><div><span>Sequence 3 · Camera view</span><h3>Dynamic monocular observation</h3><p>The corresponding moving-camera perspective through the scene.</p></div></article>
+      </div>
+    </section>
+
+    <section id="results">
+      <div class="section-head"><div><span class="index">02</span><h2>Motion results</h2></div><p>PhysDynPose results paired with their corresponding moving-camera observations.</p></div>
+      <div class="slider-shell">
+        <div class="result-slider result-grid" id="result-slider">
+          <article><div class="comparison sync-pair"><div class="clip"><span>Moving-camera RGB</span><video autoplay muted loop playsinline preload="metadata"><source src="assets/rgb/seq1_rgb.mp4" type="video/mp4"></video></div><div class="clip"><span>PhysDynPose</span><video autoplay muted loop playsinline preload="metadata"><source src="assets/results/seq1_31_4dhuman_slam.mp4" type="video/mp4"></video></div></div><h3>Sequence 1 · Uneven-ground walk</h3><p>Low foot skating with stable scene contact.</p></article>
+          <article><div class="comparison sync-pair"><div class="clip"><span>Moving-camera RGB</span><video autoplay muted loop playsinline preload="metadata"><source src="assets/rgb/seq4_rgb.mp4" type="video/mp4"></video></div><div class="clip"><span>PhysDynPose</span><video autoplay muted loop playsinline preload="metadata"><source src="assets/results/seq4_31_4dhuman_slam.mp4" type="video/mp4"></video></div></div><h3>Sequence 4 · Stable traversal</h3><p>A smoother optimized interval with low acceleration and foot slip.</p></article>
+          <article><div class="comparison sync-pair"><div class="clip"><span>Moving-camera RGB</span><video autoplay muted loop playsinline preload="metadata"><source src="assets/rgb/seq6_rgb.mp4" type="video/mp4"></video></div><div class="clip"><span>PhysDynPose</span><video autoplay muted loop playsinline preload="metadata"><source src="assets/results/seq6_31_4dhuman_slam.mp4" type="video/mp4"></video></div></div><h3>Sequence 6 · Long-range motion</h3><p>Physically grounded motion across an extended path.</p></article>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-arrow" id="slider-prev" type="button" aria-label="Previous result">←</button>
+          <div class="slider-dots" aria-label="Choose result">
+            <button class="active" type="button" aria-label="Show sequence 1"></button>
+            <button type="button" aria-label="Show sequence 4"></button>
+            <button type="button" aria-label="Show sequence 6"></button>
+          </div>
+          <button class="slider-arrow" id="slider-next" type="button" aria-label="Next result">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="abstract" class="abstract"><span class="index">03</span><h2>Abstract</h2><p>Most monocular and physics-based human pose tracking methods, while achieving state-of-the-art results, suffer from artifacts when the scene does not have a strictly flat ground plane or when the camera is moving. Moreover, these methods are often evaluated on in-the-wild real world videos without ground-truth data or on synthetic datasets, which fail to model the real world light transport, camera motion, and pose-induced appearance and geometry changes. To tackle these two problems, we introduce MoviCam, the first non-synthetic dataset containing ground-truth camera trajectories of a dynamically moving monocular RGB camera, scene geometry, and 3D human motion with human-scene contact labels. Additionally, we propose PhysDynPose, a physics-based method that incorporates scene geometry and physical constraints for more accurate human motion tracking in case of camera motion and non-flat scenes. More precisely, we use a state-of-the-art kinematics estimator to obtain the human pose and a robust SLAM method to capture the dynamic camera trajectory, enabling the recovery of the human pose in the world frame. We then refine the kinematic pose estimate using our scene-aware physics optimizer. From our new benchmark, we found that even state-of-the-art methods struggle with this inherently challenging setting, i.e. a moving camera and non-planar environments, while our method robustly estimates both human and camera poses in world coordinates.</p></section>
+
+    <section class="citation"><div><span class="index">04</span><h2>BibTeX</h2></div><button id="copy" type="button">Copy citation</button><pre><code id="bibtex">@inproceedings{aytekin2025physics,
+  title={Physics-based human pose estimation from a single moving RGB camera},
+  author={Aytekin, Ayce Idil and Li, Chuqiao and Luvizon, Diogo and Dabral, Rishabh and Oswald, Martin and Habermann, Marc and Theobalt, Christian},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={3891--3900},
+  year={2025}
+}</code></pre></section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#dbe3e6"/>
+  <path d="M0 0H512V512H0Z" fill="url(#minor)"/>
+  <defs>
+    <pattern id="minor" width="64" height="64" patternUnits="userSpaceOnUse">
+      <rect width="64" height="64" fill="#dbe3e6"/>
+      <rect width="32" height="32" fill="#cbd7dc"/>
+      <rect x="32" y="32" width="32" height="32" fill="#cbd7dc"/>
+      <path d="M0 0H64M0 32H64M0 64H64M0 0V64M32 0V64M64 0V64" stroke="#a8bac2" stroke-width="1"/>
+    </pattern>
+  </defs>
+</svg>
